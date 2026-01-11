@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estariot</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="light">
+
+    <header class="masthead">
+        <h1>ESTARIOT</h1>
+        <p class="subtitle">
+            Notes on mineself, histories, and related matters
+        </p>
+
+        <nav class="primary-nav">
+            <a href="index.html">Index</a>
+            <a href="posts.html">Entries</a>
+            <a href="extras.html">Miscellanea</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="notice">
+            <p>
+                This site contains personal writings and historical commentary.
+                Entries are arranged chronologically and reflect ongoing work and study.
+            </p>
+        </section>
+
+        <section class="index-grid">
+            <div class="folio">
+                <h2>Recent Entries</h2>
+                <div id="latest-posts" data-type="posts" class="card-grid"></div>
+            </div>
+            <div class="folio">
+                <h2>Miscellanea</h2>
+                <div id="latest-extras" data-type="extras" class="card-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="imprint">
+        <p>
+            Estariot · Compiled and maintained by H.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, textarea, select { width: 100%; margin: 8px 0; padding: 8px; }
+    button { padding: 10px 15px; cursor: pointer; }
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <p>Add a Post or Extra</p>
+
+  <label>GitHub Token:</label>
+  <input type="password" id="token" placeholder="ghp_" />
+
+  <label>Title:</label>
+  <input id="title" placeholder="Title" />
+
+  <label>Content:</label>
+  <textarea id="content" rows="10" placeholder="Content"></textarea>
+
+  <label>Type:</label>
+  <select id="type">
+    <option value="posts">Post</option>
+    <option value="extras">Extra</option>
+  </select>
+
+  <button onclick="uploadFile()">Upload</button>
+
+  <p id="status"></p>
+
+  <script>
+    async function uploadFile() {
+      const token = document.getElementById('token').value.trim();
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value;
+      const type = document.getElementById('type').value;
+      const status = document.getElementById('status');
+
+      status.textContent = "";
+
+      if (!token || !title || !content) {
+        status.textContent = "All fields are required.";
+        status.className = "error";
+        return;
+      }
+
+      const username = "decredim"; 
+      const repo = "decredim.github.io"; 
+      const branch = "main";
+      const slug = title.replace(/\s+/g, '-').toLowerCase();
+      const path = `${type}/${slug}.md`;
+      const url = `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
+      const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+      try {
+        await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Authorization": `token ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: `Add ${type.slice(0,-1)}: ${title}`,
+            content: encodedContent,
+            branch: branch
+          })
+        });
+
+        const indexPath = `${type}/index.json`;
+        const indexUrl = `https://api.github.com/repos/${username}/${repo}/contents/${indexPath}`;
+        let indexRes = await fetch(indexUrl);
+        let sha = null;
+        let list = [];
+
+        if (indexRes.ok) {
+          try {
+            const data = await indexRes.json();
+            sha = data.sha;
+            list = JSON.parse(atob(data.content)) || [];
+          } catch (e) {
+            list = [];
+          }
+        }
+
+        const newItem = {
+          title: title,
+          filename: `${slug}.md`,
+          date: new Date().toISOString().split('T')[0]
+        };
+
+        list.push(newItem);
+
+        await fetch(indexUrl, {
+          method: "PUT",
+          headers: {
+            "Authorization": `token ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: `Update ${type} index.json`,
+            content: btoa(unescape(encodeURIComponent(JSON.stringify(list, null, 2)))),
+            branch: branch,
+            sha: sha || undefined
+          })
+        });
+
+        status.textContent = "Upload successful!";
+        status.className = "success";
+
+      } catch (error) {
+        status.textContent = "Error: " + error;
+        status.className = "error";
+      }
+    }
+  </script>
+</body>
+</html>
