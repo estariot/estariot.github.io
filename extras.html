@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extras – Estariot</title>
+    <title>Entries – Estariot</title>
     <link rel="stylesheet" href="style.css" />
 </head>
-<body data-theme="light">
+<body data-theme="light" class="list-page">
 
-<header>
-    <h1>Extras</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="posts.html">Posts</a>
-        <a href="extras.html">Extras</a>
+<header class="masthead">
+    <h1>MISCELLANEA</h1>
+    <p class="subtitle">
+        Extras
+    </p>
+
+    <nav class="primary-nav">
+        <a href="index.html">Index</a>
+        <a href="posts.html">Entries</a>
+        <a href="extras.html">Miscellanea</a>
+        <a href="gits.html">Gits</a>
     </nav>
+
     <button id="theme-toggle" class="theme-btn">Dark Mode</button>
 </header>
 
 <main>
-    <section class="content-section">
-        <h2>All Extras</h2>
-        <div id="list-container" data-type="extras"></div>
+    <section class="archive">
+        <h2 class="archive-heading">All Extras</h2>
+
+        <div
+            id="list-container"
+            class="archive-list"
+            data-type="extras">
+        </div>
     </section>
 </main>
+
+<footer class="imprint">
+    <p>
+        Estariot · Compiled and maintained by H.
+    </p>
+</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-

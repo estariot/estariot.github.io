@@ -29,6 +29,7 @@
   <select id="type">
     <option value="posts">Post</option>
     <option value="extras">Extra</option>
+    <option value="gits">Gits</option>
   </select>
 
   <button onclick="uploadFile()">Upload</button>
@@ -51,8 +52,8 @@
         return;
       }
 
-      const username = "decredim"; 
-      const repo = "decredim.github.io"; 
+      const username = "estariot"; 
+      const repo = "estariot.github.io"; 
       const branch = "main";
       const slug = title.replace(/\s+/g, '-').toLowerCase();
       const path = `${type}/${slug}.md`;

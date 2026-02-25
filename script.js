@@ -50,14 +50,17 @@ async function loadMarkdown(type, filename) {
 async function loadLatest() {
     const postsArea = document.getElementById("latest-posts");
     const extrasArea = document.getElementById("latest-extras");
+    const gitArea = document.getElementById("latest-gits")
 
-    if (!postsArea && !extrasArea) return;
+    if (!postsArea && !extrasArea && !gitArea) return;
 
     let posts = await loadIndex("posts");
     let extras = await loadIndex("extras");
+    let gits = await loadIndex("gits")
 
     posts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
     extras = extras.sort((a, b) => new Date(b.date) - new Date(a.date));
+    gits = gits.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     if (postsArea) {
         postsArea.innerHTML = posts
@@ -79,6 +82,17 @@ async function loadLatest() {
                     <p>${e.date}</p>
                 </div>
             `).join("");
+    }
+
+    if (gitArea) {
+        gitArea.innerHTML = gits
+            .slice(0, 2)
+            .map(p =>
+                <div class="preview-item">
+                    <a href="view.html?type=gits&file=${e.filename}"><h4>${e.title}</h4></a>
+                    <p>${e.date}</p>
+                </div>
+            ).join("");
     }
 }
 
