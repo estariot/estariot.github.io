@@ -46,7 +46,7 @@ function mdToHtml(md) {
 // JSON loader
 async function loadIndex(type) {
     try {
-        const res = await fetch(`/${type}/index.json`);
+        const res = await fetch(`${type}/index.json`);
 
         if (!res.ok) return [];
 
@@ -61,7 +61,7 @@ async function loadIndex(type) {
 
 // Markdown loader
 async function loadMarkdown(type, filename) {
-    const res = await fetch(`/${type}/${filename}`);
+    const res = await fetch(`${type}/${filename}`);
     return await res.text();
 }
 
