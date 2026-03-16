@@ -78,12 +78,17 @@ main {
 
 .masthead {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-start;
+
     text-align: center;
-    padding: 0 20px;
+
+    padding-top: 22vh;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .masthead h1 {
@@ -125,9 +130,19 @@ main {
 /* Index Grids */
 
 .index-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.index-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.index-grid::-webkit-scrollbar-thumb {
+    background: var(--rule);
+    border-radius: 4px;
 }
 
 @media (max-width: 768px) {
@@ -244,7 +259,7 @@ footer {
     text-align: center;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
-    color: var(--ink-muted;
+    color: var(--ink-muted);
     border-top: 1px solid var(--rule);
 }
 
@@ -332,4 +347,151 @@ footer {
 
 .card:hover {
     background: rgba(0,0,0,0.03);
+}
+
+
+/* smaller hero for list pages */
+
+.subhead {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.subhead h1 {
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+}
+
+.subhead .subtitle {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+}
+
+
+/* archive layout */
+
+.archive {
+    max-width: 700px;
+    margin: 40px auto 120px;
+}
+
+.archive-heading {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+}
+
+
+/* archive entry list */
+
+.archive-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* each entry */
+
+.list-item {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+
+    padding: 16px 18px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    position: relative;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.list-item a:hover {
+    text-decoration: underline;
+}
+
+.list-item span {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+}
+
+/* scattered archive grid */
+
+.archive-list #list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+}
+
+.list-item {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+
+    padding: 16px 18px;
+
+    position: relative;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.list-item:hover {
+    transform: rotate(0deg) scale(1.04);
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.list-item:hover {
+    transform: rotate(0deg) scale(1.03);
+    z-index: 10;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.list-item a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.list-item span {
+    display: block;
+    margin-top: 6px;
+
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+}
+
+/* homepage preview items */
+.preview-item {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+    padding: 12px 14px;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.preview-item a {
+    text-decoration: none;
+    color: var(--ink);  /* remove blue/purple link color */
+    display: block;     /* make the link fill the card */
+}
+
+.preview-item:hover {
+    background: rgba(0, 0, 0, 0.03);  /* subtle highlight */
+    transform: translateY(-2px);      /* tiny lift effect */
+}
+
+.preview-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--ink-muted);
+    transform: translateY(-2px);
 }
