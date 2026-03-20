@@ -142,6 +142,7 @@ main {
 
 .index-grid::-webkit-scrollbar-thumb {
     background: var(--rule);
+    border-radius: 4px;
 }
 
 @media (max-width: 768px) {
@@ -277,6 +278,7 @@ footer {
 
     background: var(--paper);
     border: 1px solid var(--rule);
+    border-radius: 6px;
 
     font-size: 0.8rem;
     letter-spacing: 0.12em;
@@ -391,6 +393,37 @@ footer {
 
 /* each entry */
 
+.list-item {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+
+    padding: 16px 18px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    position: relative;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.list-item a:hover {
+    text-decoration: underline;
+}
+
+.list-item span {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+}
+
+/* scattered archive grid */
+
 .archive-list #list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -448,112 +481,17 @@ footer {
 
 .preview-item a {
     text-decoration: none;
-    color: var(--ink);  
-    display: block;     
+    color: var(--ink);  /* remove blue/purple link color */
+    display: block;     /* make the link fill the card */
 }
 
 .preview-item:hover {
-    background: rgba(0, 0, 0, 0.03);  
-    transform: translateY(-2px);      
+    background: rgba(0, 0, 0, 0.03);  /* subtle highlight */
+    transform: translateY(-2px);      /* tiny lift effect */
 }
 
 .preview-item:hover {
     background: rgba(0, 0, 0, 0.05);
     border-color: var(--ink-muted);
     transform: translateY(-2px);
-}
-
-/* Pinboard layout */
-.archive-list {
-    position: relative;
-    width: 100%;
-    min-height: 500px;
-}
-
-.list-item {
-    position: absolute;
-    width: 300px;
-    padding: 14px 16px;
-    background: var(--paper-dark);
-    border: 1px solid var(--rule);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-}
-
-.list-item:hover {
-    transform: scale(1.05) rotate(0deg);
-    z-index: 10;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.folder {
-    margin: 18px 0;
-    position: relative;
-}
-
-.folder-title {
-    display: inline-block;
-
-    padding: 6px 12px;
-
-    background: transparent;
-    border: 1px dashed var(--rule);
-
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
-}
-
-.folder-title::before {
-    display: none;
-}
-
-.folder-title:hover {
-    background: rgba(0,0,0,0.04);
-}
-
-.entry-card {
-    width: 220px;
-    padding: 14px 16px;
-
-    background: var(--paper-dark);
-    border: 1px solid var(--rule);
-
-    font-size: 0.9rem;
-    color: var(--ink-muted);
-    letter-spacing: 0.05em;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-
-    transform-origin: center;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.entry-card:hover {
-    /*transform: scale(1.05) rotate(0deg) !important;*/
-    z-index: 20;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-#folders-container {
-    position: relative;
-    min-height: 500px;
-}
-
-.entry-card:nth-child(3n) {
-    background: #ece7df;
-}
-
-.entry-card:nth-child(4n) {
-    background: #f0ebe4;
-}
-.entry-card {
-    transform: rotate(var(--rot, 0deg));
 }

@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entries – Estariot</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body data-theme="light" class="list-page">
 
-<header class="masthead">
-    <h1>ENTRIES</h1>
-    <p class="subhead">
-        by date
-    </p>
-
-    <nav class="primary-nav top-nav">
-        <a href="index.html">Index</a>
-        <a href="posts.html">Entries</a>
-        <a href="extras.html">Miscellanea</a>
-        <a href="gits.html">Gits</a>
-    </nav>
-
-    <button id="theme-toggle" class="theme-btn">Dark Mode</button>
+<header class="subhead">
+    <h1>Entries</h1>
+    <p class="subhead">Posts pertaining to the aforementioned.</p>
 </header>
 
+<nav class="top-nav">
+    <a href="index.html">Index</a>
+    <a href="posts.html">Entries</a>
+    <a href="extras.html">Miscellanea</a>
+    <a href="gits.html">Gits</a>
+</nav>
+
 <main>
-    <section class="archive">
-        <h2 class="archive-heading">All Entries</h2>
-        <div id="folders-container" class="folders-container"></div>
-    </section>
+
+<section class="archive">
+
+    <h2 class="archive-heading">All Entries</h2>
+
+    <div class="archive-list">
+        <div id="list-container" data-type="posts"></div>
+    </div>
+
+</section>
+
 </main>
 
 <footer class="imprint">
-    <p>Estariot · Compiled and maintained by H.</p>
+<p>Estariot · Compiled and maintained by H.</p>
 </footer>
 
 <script src="script.js"></script>
